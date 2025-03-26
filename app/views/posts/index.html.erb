@@ -1,0 +1,24 @@
+
+<h1>Posts</h1>
+
+<!-- Ссылка с включенным Turbo -->
+<%= link_to "New post (Turbo ON)", new_post_path, class: "btn" %>
+
+<!-- Ссылка с отключенным Turbo -->
+<%= link_to "New post (Turbo OFF)", new_post_path, 
+            class: "btn", 
+            data: { turbo: false } %>
+
+<!-- Форма с включенным Turbo -->
+<%= form_with(model: Post.new) do |form| %>
+  <%= form.text_field :title %>
+  <%= form.submit "Create (Turbo ON)" %>
+<% end %>
+
+<!-- Форма с отключенным Turbo -->
+<%= form_with(model: Post.new, data: { turbo: false }) do |form| %>
+  <%= form.text_field :title %>
+  <%= form.submit "Create (Turbo OFF)" %>
+<% end %>
+
+<%= render @posts %>
